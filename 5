@@ -1,0 +1,37 @@
+//Mother-Child-Difference Solution:
+
+function motherChildDiff(p) {
+    return p.born - byName[p.mother].born;
+};
+
+function motherFilter(p) { 
+    return (byName[p.mother]);
+};
+console.log(average(ancestry.filter(motherFilter).map(motherChildDiff)));
+
+//Average Age by Century Solution:
+
+function avgAgeByCentury(array, avg) {
+    var byCentury = [];         
+    array.forEach(function(p) {
+        return p.century = Math.ceil(p.died / 100);
+    });
+
+    array.filter(function(p) {
+        if (byCentury[p.century]) {
+            byCentury[p.century].push(p.died - p.born);
+        } else {
+            byCentury[p.century] = [];
+            byCentury[p.century].push(p.died - p.born);
+        }
+    });
+    
+    byCentury.forEach(function(k, i) {
+        var result = Math.round(avg(k) * 10) / 10;
+        console.log(i + ': ' + result);
+        return byCentury[i] = result;
+        });
+        return byCentury;       
+};
+
+console.log(avgAgeByCentury(ancestry, average))
