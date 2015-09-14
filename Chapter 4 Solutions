@@ -1,0 +1,39 @@
+//Deep Equal:
+
+function deepEqual(a, b) {
+  if (!(typeof(a, b) == 'object' && (a, b) != null)) {
+    return (a === b);
+  } else {
+    var counterA = 0;
+    var counterB = 0;
+    for (var k in a) {
+      counterA += 1;
+    }
+    for (var k2 in b) {
+      counterB += 1;
+    }
+    if (counterA != counterB) {
+      return false;
+    } else {
+      for (var k in a) {
+        if (!(k in b)) {
+          return false;
+        } else {
+          return deepEqual(a[k], b[k]);
+        }
+      }
+
+    }
+  }
+};
+
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+
+
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
