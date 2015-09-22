@@ -10,3 +10,23 @@ function isEven(n) {
   	else 
       return isEven(n - 2)
 }
+
+//charCounter:
+
+function countBs(string) {
+ 	var bCounter = 0;
+	for (var i = 0; i < string.length; i++) {
+    	if (string.charAt(i) === 'B')
+        	bCounter += 1;
+    }
+    return bCounter;
+}
+
+function countChar(string, char) {
+	var charCounter = 0;
+  	for (var i = 0; i < string.length; i++) {
+    	if (string.charAt(i) === char)
+        	charCounter += 1;
+    }
+    return charCounter;
+}
