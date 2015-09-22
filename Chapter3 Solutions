@@ -1,0 +1,20 @@
+//Chapter3 Recursion:
+
+function isEven(n) {
+	function isNegative(n) {
+      if (n === 0) 
+        return true;
+      if (n === -1)
+      	return false;
+      else return isNegative(n + 2)
+    };
+	
+  	if (n < 0) return isNegative(n);
+  
+	if (n === 0) 
+      return true;
+  	if (n === 1)
+  	  return false;
+  	else return isEven(n - 2)
+    
+}
