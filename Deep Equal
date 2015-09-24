@@ -1,3 +1,72 @@
+//ch4 Solutions:
+
+function reverseArray(arr) {
+  var newArr = [];
+  for (var i = arr.length - 1; i >= 0 ; i--) {
+    newArr.push(arr.pop(arr[i]));
+  }
+  return newArr;   
+} 
+
+function reverseArrayInPlace(arr) {
+  for (var i = 0; i < Math.round(arr.length / 2); i++) {
+    var curr = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = curr;
+  }
+  return arr;  
+}
+
+function arrayToList(arr) {
+  var list = {};
+  for (var i = 0; i < arr.length; i++) {
+    list = {value: arr[i], rest: list}
+  }
+  return list;
+}
+
+function listToArray(list) {
+  var newArr = [];
+
+  function listDigger(list) {
+    for (var k in list) {
+      if (typeof list[k] == 'object')
+        return listDigger(list[k]);
+      else
+        newArr.push(list[k]);
+    }
+  }
+  
+  if (newArr[0] == undefined) 
+    listDigger(list);
+    return newArr;
+}
+
+function prepend(element, list) {
+  return {element, list};
+}
+
+function nth(list, n) {
+  var posCounter = 1;
+    
+    function listDigger(list) {
+      for (var k in list) {
+        if (typeof list[k] == 'object')
+          return listDigger(list[k]);
+        
+        else if (posCounter == n) 
+          return list[k];
+
+        else if (k != undefined) 
+          posCounter += 1;
+        else 
+          return undefined;
+        }
+        
+     }
+    return listDigger(list);
+}
+
 //Deep Equal:
 
 function deepEqual(a, b) {
