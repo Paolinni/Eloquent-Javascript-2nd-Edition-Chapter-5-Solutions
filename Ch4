@@ -70,39 +70,28 @@ function nth(list, n) {
 //Deep Equal:
 
 function deepEqual(a, b) {
-  if (!(typeof(a, b) == 'object' && (a, b) != null)) {
+  if (typeof a != 'object' && typeof b != 'object'
+      && a != null && b != null) {
     return (a === b);
   } else {
     var counterA = 0;
     var counterB = 0;
-    for (var k in a) {
-      counterA += 1;
+    for (var kA in a) {
+      counterA++;
     }
-    for (var k2 in b) {
-      counterB += 1;
+    for (var kB in b) {
+      counterB++;
     }
     if (counterA != counterB) {
       return false;
     } else {
-      for (var k in a) {
-        if (!(k in b)) {
+      for (var kA in a) {
+        if (!(kA in b)) {
           return false;
         } else {
-          return deepEqual(a[k], b[k]);
+          return deepEqual(a[kA], b[kA]);
         }
       }
-
     }
   }
 };
-
-var obj = {here: {is: "an"}, object: 2};
-console.log(deepEqual(obj, obj));
-
-
-console.log(deepEqual(obj, obj));
-// → true
-console.log(deepEqual(obj, {here: 1, object: 2}));
-// → false
-console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
-// → true
